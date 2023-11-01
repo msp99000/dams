@@ -1,0 +1,76 @@
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-card img {
+  max-width: 100%; /* Set the maximum width to 100% to make it responsive */
+  height: auto; /* Allow the height to adjust proportionally */
+  margin-bottom: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+/* Apply a background color and center the login page */
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the login card */
+.login-container {
+  text-align: center;
+}
+
+.login-card {
+  background-color: #fff;
+  border-radius: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
+}
+
+/* Style the rounded input and button */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.rounded-input,
+.rounded-button {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.rounded-button {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.rounded-input:focus {
+  outline: none;
+  background-color: #f0f0f0;
+}
+
+.rounded-button {
+  background-color: #0b874b;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rounded-button:hover {
+  background-color: #14db7b;
+}

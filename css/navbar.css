@@ -1,0 +1,234 @@
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #0b874b;
+  color: white;
+  padding: 10px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: height 0.3s;
+}
+
+/* Container for the navbar contents */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%; /* Adjusted width for better responsiveness */
+  margin: 0 auto; /* Center align the container */
+}
+
+/* Navigation list styles */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px; /* Added gap between list items for spacing */
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list .last-item {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 550;
+  padding: 2px;
+}
+
+.brand a:hover {
+  transform: scale(1.05);
+}
+
+/* Expander styles */
+.expander {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Navigation link styles */
+.nav-list a {
+  text-decoration: none;
+  color: white;
+  font-weight: 550;
+  font-size: 17px;
+  transition: all 0.3s linear;
+}
+
+/* Sub-menu styles */
+.sub-list {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0px;
+  margin: 5px;
+  border-radius: 10px;
+  transition: opacity 0.9s;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sub-list li {
+  width: 130px;
+  padding: 8px;
+  border-radius: 30px; /* Simplified border-radius */
+  text-align: center;
+  font-size: 8px;
+}
+
+.sub-list a {
+  color: #0b874b;
+  /* text-align: left; */
+  align-items: center;
+}
+
+.sub-list li a {
+  font-size: 16px;
+}
+
+.sub-list li a:hover {
+  background-color: #72e1ab;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.table-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b874b;
+  font-size: 42px;
+  margin-top: 60px; /* Add some spacing between text and cards */
+  margin-bottom: 20px; /* Add some spacing between text and cards */
+  font-weight: bold;
+}
+
+.table-text img {
+  margin-right: 25px;
+  max-width: 60px;
+}
+
+/* Active expander to show sub-menu */
+.expander.active .sub-list {
+  display: block;
+}
+
+/* Welcome text styles */
+.welcome-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(23, 116, 163);
+  font-size: 42px;
+  margin-top: 50px; /* Add some spacing between text and cards */
+  margin-bottom: 20px; /* Add some spacing between text and cards */
+  font-weight: bold;
+}
+
+.welcome-text img {
+  color: rgb(23, 116, 163);
+  margin-right: 24px;
+}
+
+/* Zoom-in effect on hover for navigation links */
+.nav-list a {
+  cursor: pointer;
+  transition: transform 0.3s; /* Add a transition for smooth zoom effect */
+}
+
+.nav-list a:hover {
+  transform: scale(1.2); /* Slightly zoom in on hover */
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-right: 10px; /* Adjust the spacing between list items */
+}
+
+.nav-list .last-item {
+  margin-right: 0; /* Remove margin for the last item to prevent extra space */
+}
+
+/* Styles for screens with a max-width of 768px (typical for mobile devices) */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+  }
+
+  /* Mobile menu button styles */
+  .mobile-menu-button {
+    display: block; /* Show the mobile menu button */
+    padding-right: 20px; /* Add right padding for spacing */
+  }
+
+  .mobile-menu-button .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    border-radius: 2px;
+  }
+
+  .brand {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+
+  .nav-list {
+    display: block;
+    padding-right: 20px; /* Add right padding for spacing */
+  }
+
+  .nav-list.active {
+    display: none;
+  }
+
+  .mobile-menu-button.active .bar {
+    background-color: white;
+  }
+
+  /* Display sub-menu on click for mobile */
+  .expander.active .sub-list {
+    display: block;
+  }
+
+  .sub-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list a,
+  .sub-list a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+/* Media query to adapt dropdown placement */
+@media (max-width: 800px) {
+  .dropdown-content {
+    left: -50px; /* Adjust as needed to fit within the window */
+  }
+}
