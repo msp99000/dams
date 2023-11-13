@@ -1,5 +1,5 @@
 CREATE TABLE `admins` (
-  `admin_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `admin_id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
@@ -8,32 +8,30 @@ CREATE TABLE `admins` (
   `password` varchar(255) DEFAULT NULL,
   `phone` bigint(20) DEFAULT NULL,
   `dob` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `admins` (`admin_id`, `username`, `first_name`, `last_name`, `email`, `gender`, `password`, `phone`, `dob`) VALUES
-(101, 'admin', 'Admin', 'One', 'admin@mail.com', 'Male', '827ccb0eea8a706c4c34a16891f84e7b', 17345478924, '1989-03-01'),
-(102, 'bhoj', 'Bhoj', 'Bhatt', 'bhoj@admin.com', 'Male', '9db21e050c3d9ff2e6234991d9bff576', 9856665985, '2023-10-04'),
-(103, 'shiva', 'Shiva', 'shiva', 'shiva@admin.com', 'Male', '69f404925df883e0e5579d65b7768e7c', 9848723136, '2023-10-01');
+(101, 'admin', 'Admin', 'One', 'admin@mail.com', 'Male', '827ccb0eea8a706c4c34a16891f84e7b', 17345478924, '1989-03-01');
 
-CREATE TABLE `attendance` (
-  `attendance_id` int(11) NOT NULL,
-  `class_id` int(11) DEFAULT NULL,
-  `instructor_id` int(11) DEFAULT NULL,
-  `student_id` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `status` enum('Present','Absent') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `sessions` (
+  `session_id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `session_name` varchar(255) DEFAULT NULL,
+  `year` varchar(4) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL
+);
 
-INSERT INTO `attendance` (`attendance_id`, `class_id`, `instructor_id`, `student_id`, `date`, `status`) VALUES
-(1, 601, 304, 205, '2023-10-21', 'Present'),
-(2, 601, 304, 1185665, '2023-10-21', 'Present');
+INSERT INTO `sessions` (`session_id`, `session_name`, `year`, `start_date`, `end_date`) VALUES 
+(1001, 'Fall', '2023', '2023-09-01', '2023-10-30');
+
 
 CREATE TABLE `classes` (
-  `class_id` int(11) NOT NULL,
+  `class_id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `section` varchar(255) DEFAULT NULL,
   `course_id` int(11) DEFAULT NULL,
-  `session_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `session_id` int(11) DEFAULT NULL,
+  FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`)
+);
 
 INSERT INTO `classes` (`class_id`, `section`, `course_id`, `session_id`) VALUES
 (601, 'Section 001', 501, 1001),
@@ -44,7 +42,7 @@ CREATE TABLE `courses` (
   `course_id` int(11) NOT NULL,
   `course_name` varchar(255) DEFAULT NULL,
   `course_code` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `courses` (`course_id`, `course_name`, `course_code`) VALUES
 (501, 'Fundamentals of Data Analytics', 'DTSC 5501'),
@@ -64,7 +62,7 @@ CREATE TABLE `instructors` (
   `phone` bigint(20) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `instructors` (`instructor_id`, `username`, `first_name`, `last_name`, `email`, `phone`, `dob`, `password`) VALUES
 (301, 'instructor', 'Instructor', 'One', 'instructor@mail.com', 15646471226, '1996-10-03', '827ccb0eea8a706c4c34a16891f84e7b'),
@@ -82,7 +80,7 @@ CREATE TABLE `leaves` (
   `status` enum('Pending','Approved','Denied') DEFAULT NULL,
   `reason` text DEFAULT NULL,
   `response_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `leaves` (`leave_request_id`, `student_id`, `instructor_id`, `class_id`, `request_date`, `status`, `reason`, `response_date`) VALUES
 (1, 205, 304, 601, '2023-10-21', 'Pending', 'Sick leave', NULL);
@@ -94,26 +92,13 @@ CREATE TABLE `schedules` (
   `student_id` int(11) DEFAULT NULL,
   `schedule` datetime DEFAULT NULL,
   `status` enum('Active','Expired') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `schedules` (`schedule_id`, `class_id`, `instructor_id`, `student_id`, `schedule`, `status`) VALUES
 (701, 601, 302, 205, '2020-09-01 11:00:00', 'Active'),
 (702, 603, 304, 205, '2020-09-02 11:30:00', 'Active'),
 (703, 601, 304, 204, '2023-10-21 19:21:11', 'Active');
 
-CREATE TABLE `sessions` (
-  `session_id` int(11) NOT NULL,
-  `session_name` varchar(255) DEFAULT NULL,
-  `year` varchar(4) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-INSERT INTO `sessions` (`session_id`, `session_name`, `year`, `start_date`, `end_date`) VALUES
-(1001, 'Fall', '2023', '2023-09-01', '2023-10-30'),
-(1002, 'Spring', '2023', '2023-11-01', '2023-12-15'),
-(1003, 'Summer', '2024', '2024-01-15', '2024-03-30'),
-(1004, 'Spring', '2024', '2024-01-15', '2024-05-01');
 
 CREATE TABLE `students` (
   `student_id` int(11) NOT NULL,
@@ -124,7 +109,7 @@ CREATE TABLE `students` (
   `phone` bigint(20) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 INSERT INTO `students` (`student_id`, `username`, `first_name`, `last_name`, `email`, `phone`, `dob`, `password`) VALUES
 (201, 'student', 'Student', 'One', 'student@mail.com', 13447118819, '2006-02-07', '827ccb0eea8a706c4c34a16891f84e7b'),
@@ -134,18 +119,22 @@ INSERT INTO `students` (`student_id`, `username`, `first_name`, `last_name`, `em
 (1185665, 'brb', 'BRB', 'brb', 'brb@student.com', 9402256656, '2023-10-10', 'b992bdb865efa8b3b7333d0458323f4e'),
 (14253666, 'dhreej', 'Dhreej', 'Dhreej', 'dhreej@student.com', 94253665222, '2023-10-10', 'b850ec547891bb8665dede6deda28a6e');
 
-ALTER TABLE `admins`
-  ADD PRIMARY KEY (`admin_id`);
+CREATE TABLE `attendance` (
+  `attendance_id` int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `class_id` int(11) DEFAULT NULL,
+  `instructor_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `status` enum('Present','Absent') DEFAULT NULL,
+  FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`),
+  FOREIGN KEY (`instructor_id`) REFERENCES `instructors`(`instructor_id`),
+  FOREIGN KEY (`student_id`) REFERENCES `students`(`student_id`)
+);
 
-ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`attendance_id`),
-  ADD KEY `course_id` (`class_id`),
-  ADD KEY `instructor_id` (`instructor_id`),
-  ADD KEY `student_id` (`student_id`);
+INSERT INTO `attendance` (`attendance_id`, `class_id`, `instructor_id`, `student_id`, `date`, `status`) VALUES
+(1, 601, 304, 205, '2023-10-21', 'Present');
 
---
--- Indexes for table `classes`
---
 ALTER TABLE `classes`
   ADD PRIMARY KEY (`class_id`),
   ADD KEY `course_id` (`course_id`);
@@ -282,6 +271,24 @@ ALTER TABLE `schedules`
   ADD CONSTRAINT `schedules_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO `sessions` (`session_name`, `year`, `start_date`, `end_date`) VALUES 
+('Fall 2019', '2019', '2019-09-01', '2019-10-30'),
+('Spring 2019', '2019', '2019-11-01', '2019-12-15'),
+('Summer 2019', '2019', '2019-01-15', '2019-03-30'),
+('Fall 2020', '2020', '2020-09-01', '2020-10-30'),
+('Spring 2020', '2020', '2020-11-01', '2020-12-15'),
+('Summer 2020', '2020', '2020-01-15', '2020-03-30'),
+('Fall 2021', '2021', '2021-09-01', '2021-10-30'),
+('Spring 2021', '2021', '2021-11-01', '2021-12-15'),
+('Summer 2021', '2021', '2021-01-15', '2021-03-30'),
+('Fall 2022', '2022', '2022-09-01', '2022-10-30'),
+('Spring 2022', '2022', '2022-11-01', '2022-12-15'),
+('Summer 2022', '2022', '2022-01-15', '2022-03-30'),
+('Fall 2023', '2023', '2023-09-01', '2023-10-30'),
+('Spring 2023', '2023', '2023-11-01', '2023-12-15'),
+('Summer 2023', '2023', '2023-01-15', '2023-03-30'),
+('Fall 2024', '2024', '2024-09-01', '2024-10-30'),
+('Spring 2024', '2024', '2024-11-01', '2024-12-15'),
+('Summer 2024', '2024', '2024-01-15', '2024-03-30'),
+('Fall 2025', '2025', '2025-09-01', '2025-10-30'),
+('Spring 2025', '2025', '2025-11-01', '2025-12-15');
