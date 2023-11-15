@@ -4,60 +4,65 @@ include "../config/connection.php";
 $database = new Database();
 $conn = $database->getConnection();
 
-class Admin {
+class Admin
+{
 
-    public function count_admins(){
+    public function count_admins()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM admins"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
         } else {
             return 0; // Return 0 if an error occurs
         }
-    } 
+    }
 
-    public function count_attendance(){
+    public function count_attendance()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM attendance"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
         } else {
             return 0; // Return 0 if an error occurs
         }
-    }  
+    }
 
-    public function count_users(){
+    public function count_users()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM users"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
         } else {
             return 0; // Return 0 if an error occurs
         }
-    } 
+    }
 
-    public function count_instructors(){
+    public function count_instructors()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM instructors"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -66,13 +71,14 @@ class Admin {
         }
     }
 
-    public function count_students(){
+    public function count_students()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM students"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -81,13 +87,14 @@ class Admin {
         }
     }
 
-    public function count_classes(){
+    public function count_classes()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM classes"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -96,13 +103,14 @@ class Admin {
         }
     }
 
-    public function count_courses(){
+    public function count_courses()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM courses"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -111,13 +119,14 @@ class Admin {
         }
     }
 
-    public function count_sessions(){
+    public function count_sessions()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM sessions"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -126,13 +135,14 @@ class Admin {
         }
     }
 
-    public function count_terms(){
+    public function count_terms()
+    {
         global $conn;
-    
+
         $query = "SELECT COUNT(*) as total FROM terms"; // Use an alias for the count
-    
+
         $result = $conn->query($query);
-    
+
         if ($result) {
             $row = $result->fetch_assoc();
             return $row['total']; // Return the count
@@ -141,9 +151,10 @@ class Admin {
         }
     }
 
-    public function list_admins() {
+    public function list_admins()
+    {
         global $conn;
-        
+
         $query = "SELECT * FROM admins";
         $rs = $conn->query($query);
         $users = array(); // Create an array to store all user rows
@@ -155,7 +166,8 @@ class Admin {
         return $users;
     }
 
-    public function add_admin($firstName, $lastName, $gender, $dob, $email, $phone, $username, $password) {
+    public function add_admin($firstName, $lastName, $gender, $dob, $email, $phone, $username, $password)
+    {
         global $conn;
 
         // Prepare the SQL statement with placeholders
@@ -176,7 +188,8 @@ class Admin {
         }
     }
 
-    public function remove_user($userId) {
+    public function remove_user($userId)
+    {
         global $conn;
 
         // Prepare the SQL statement with a placeholder
@@ -196,9 +209,10 @@ class Admin {
         }
     }
 
-    public function list_instructors() {
+    public function list_instructors()
+    {
         global $conn;
-        
+
         $query = "SELECT * FROM instructors";
         $rs = $conn->query($query);
         $users = array(); // Create an array to store all user rows
@@ -210,9 +224,10 @@ class Admin {
         return $users;
     }
 
-    public function list_attendance() {
+    public function list_attendance()
+    {
         global $conn;
-        
+
         $query = "SELECT * FROM attendance";
         $rs = $conn->query($query);
         $users = array(); // Create an array to store all user rows
@@ -224,7 +239,8 @@ class Admin {
         return $users;
     }
 
-    public function add_instructor($username, $firstName, $lastName, $email, $phone, $dob) {
+    public function add_instructor($username, $firstName, $lastName, $email, $phone, $dob)
+    {
         global $conn;
 
         // Prepare the SQL statement with placeholders
@@ -245,7 +261,8 @@ class Admin {
         }
     }
 
-    public function add_session($sessionName, $year, $startDate, $endDate) {
+    public function add_session($sessionName, $year, $startDate, $endDate)
+    {
         global $conn;
 
         // Prepare the SQL statement with placeholders
@@ -266,7 +283,8 @@ class Admin {
         }
     }
 
-    public function remove_instructor($instructorId) {
+    public function remove_instructor($instructorId)
+    {
         global $conn;
 
         // Prepare the SQL statement with a placeholder
@@ -286,18 +304,19 @@ class Admin {
         }
     }
 
-    public function update_instructor($username, $firstName, $lastName, $email, $phone, $dob, $instructorId) {
+    public function update_instructor($username, $firstName, $lastName, $email, $phone, $dob, $instructorId)
+    {
         global $conn;
-    
+
         // Prepare the SQL statement with placeholders
         $query = "UPDATE instructors SET username = ?, first_name = ?, last_name = ?, email = ?, phone = ?, dob = ? WHERE instructor_id = ?";
-    
+
         // Create a prepared statement
         $stmt = $conn->prepare($query);
-    
+
         // Bind parameters to the prepared statement
         $stmt->bind_param("ssssisi", $username, $firstName, $lastName, $email, $phone, $dob, $instructorId);
-    
+
         // Execute the prepared statement
         if ($stmt->execute()) {
             return true; // Instructor updated successfully
@@ -306,9 +325,10 @@ class Admin {
         }
     }
 
-    public function list_students() {
+    public function list_students()
+    {
         global $conn;
-        
+
         $query = "SELECT * FROM students";
         $rs = $conn->query($query);
         $users = array(); // Create an array to store all user rows
@@ -320,7 +340,8 @@ class Admin {
         return $users;
     }
 
-    public function add_student($studentId, $username, $firstName, $lastName, $email, $phone, $dob, $password) {
+    public function add_student($studentId, $username, $firstName, $lastName, $email, $phone, $dob, $password)
+    {
         global $conn;
 
         // Prepare the SQL statement with placeholders
@@ -341,7 +362,8 @@ class Admin {
         }
     }
 
-    public function remove_student($studentId) {
+    public function remove_student($studentId)
+    {
         global $conn;
 
         // Prepare the SQL statement with a placeholder
@@ -361,18 +383,19 @@ class Admin {
         }
     }
 
-    public function update_student($username, $firstName, $lastName, $email, $phone, $dob, $studentId) {
+    public function update_student($username, $firstName, $lastName, $email, $phone, $dob, $studentId)
+    {
         global $conn;
-    
+
         // Prepare the SQL statement with placeholders
         $query = "UPDATE students SET username = ?, first_name = ?, last_name = ?, email = ?, phone = ?, dob = ? WHERE student_id = ?";
-    
+
         // Create a prepared statement
         $stmt = $conn->prepare($query);
-    
+
         // Bind parameters to the prepared statement
         $stmt->bind_param("ssssisi", $username, $firstName, $lastName, $email, $phone, $dob, $studentId);
-    
+
         // Execute the prepared statement
         if ($stmt->execute()) {
             return true; // Instructor updated successfully
@@ -381,18 +404,19 @@ class Admin {
         }
     }
 
-    public function update_admin($username, $firstName, $lastName, $email, $gender, $phone, $dob, $password, $adminId) {
+    public function update_admin($username, $firstName, $lastName, $email, $gender, $phone, $dob, $password, $adminId)
+    {
         global $conn;
-    
+
         // Prepare the SQL statement with placeholders
         $query = "UPDATE admins SET username = ?, first_name = ?, last_name = ?, email = ?, gender = ?, phone = ?, dob = ?, `password` = ? WHERE admin_id = ?";
-    
+
         // Create a prepared statement
         $stmt = $conn->prepare($query);
-    
+
         // Bind parameters to the prepared statement
         $stmt->bind_param("sssssissi", $username, $firstName, $lastName, $email, $gender, $phone, $dob, $password, $adminId);
-    
+
         // Execute the prepared statement
         if ($stmt->execute()) {
             return true; // Instructor updated successfully
@@ -401,7 +425,8 @@ class Admin {
         }
     }
 
-    public function list_courses() {
+    public function list_courses()
+    {
         global $conn;
 
         $query = "SELECT * FROM courses";
@@ -412,10 +437,11 @@ class Admin {
             $users[] = $row; // Add each user row to the array
         }
 
-        return $users; 
+        return $users;
     }
 
-    public function list_sessions() {
+    public function list_sessions()
+    {
         global $conn;
 
         $query = "SELECT * FROM sessions";
@@ -426,10 +452,11 @@ class Admin {
             $users[] = $row; // Add each user row to the array
         }
 
-        return $users; 
+        return $users;
     }
 
-    public function list_classes() {
+    public function list_classes()
+    {
         global $conn;
 
         $query = "SELECT * FROM classes";
@@ -440,7 +467,6 @@ class Admin {
             $users[] = $row; // Add each user row to the array
         }
 
-        return $users; 
+        return $users;
     }
 }
-?>
