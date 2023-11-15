@@ -31,7 +31,7 @@ if (isset($_POST['addAdmin'])) {
               </script>";
     } else {
         $alertMessage = "<div class='alert alert-danger' style='margin-right:700px;'>An error occurred while adding user!</div>";
-    }    
+    }
 } elseif (isset($_POST['removeInstructor'])) {
     // Handle removing a user
     $userId = $_POST['userId'];
@@ -46,7 +46,7 @@ if (isset($_POST['addAdmin'])) {
               </script>";
     } else {
         $alertMessage = "<div class='alert alert-danger' style='margin-right:700px;'>An error occurred while deleting user!</div>";
-    } 
+    }
 } elseif (isset($_POST['updateInstructor'])) {
 
     // Get the new user details from the form
@@ -68,9 +68,8 @@ if (isset($_POST['addAdmin'])) {
     } else {
         echo "<p>An error occurred while updating user.</p>";
     }
-
 } elseif (isset($_POST['addStudent'])) {
-    
+
     $studentId = $_POST['studentId'];
     $username = $_POST['username'];
     $firstName = $_POST['firstName'];
@@ -89,9 +88,8 @@ if (isset($_POST['addAdmin'])) {
     } else {
         echo "<p>An error occurred while updating user.</p>";
     }
-
 } elseif (isset($_POST['addInstructor'])) {
-    
+
     $username = $_POST['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -107,8 +105,7 @@ if (isset($_POST['addAdmin'])) {
               </script>";
     } else {
         echo "<p>An error occurred while updating user.</p>";
-    } 
-
+    }
 } elseif (isset($_POST['addSession'])) {
 
     $sessionName = $_POST['sessionName'];
@@ -125,8 +122,7 @@ if (isset($_POST['addAdmin'])) {
     } else {
         echo "<p>An error occurred while updating user.</p>";
     }
-
-}  elseif (isset($_POST['removeStudent'])) {
+} elseif (isset($_POST['removeStudent'])) {
 
     $studentId = $_POST['studentId'];
 
@@ -163,7 +159,7 @@ if (isset($_POST['addAdmin'])) {
 } elseif (isset($_POST['updateAdmin'])) {
 
     // Get the new user details from the form
-    $adminId = $_POST['adminId'];
+    $adminId = 101;
     $username = $_POST['username'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
@@ -178,14 +174,11 @@ if (isset($_POST['addAdmin'])) {
 
     if ($result) {
         echo "<script type = \"text/javascript\">
-                    window.location = (\"updateStudent.php\")
+                    window.location = (\"updateAdmin.php\")
               </script>";
     } else {
         echo "<p>An error occurred while updating user.</p>";
     }
-}
-
-else {
+} else {
     $alertMessage = "Invalid request.";
 }
-?>
