@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <?php include "heads.php"; ?> 
+    <?php include "heads.php"; ?>
 </head>
+
 <body id="page-top">
     <?php include "topbar.php"; ?>
     <div class="container-fluid">
@@ -19,19 +21,12 @@
                     <div class="table-text">
                         <img src="../assets/images/admin.png">
                         <div>
-                            Edit Admin
+                            Update Admin Profile
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="post" action="process.php">
-                        <div class="form-group row mb-3">
-                                <div class="col-xl-6">
-                                    <label class="form-control-label">Admin ID<span class="text-danger ml-2">*</span></label>
-                                    <input type="text" class="form-control" name="adminId" id="exampleInputFirstName" placeholder="Admin ID" required>
-                                </div>
-                                <div class="col-xl-6">
-                                    <!-- Empty -->
-                                </div>
+                            <div class="form-group row mb-3">
                             </div>
                             <div class="form-group row mb-3">
                                 <div class="col-xl-6">
@@ -47,7 +42,7 @@
                                 <div class="col-xl-6">
                                     <label class="form-control-label">Gender<span class="text-danger ml-2">*</span></label>
                                     <select class="form-control mb-3" name="gender" required>
-                                        <option> -- Select -- </option >
+                                        <option> -- Select -- </option>
                                         <option value="1">Male</option>
                                         <option value="2">Female</option>
                                     </select>
@@ -81,11 +76,11 @@
                         </form>
                     </div>
                 </div>
-                <!-- <?php include "instructorsTable.php"; ?> -->
                 <?php include "../components/footer.php"; ?>
-                </div>
             </div>
         </div>
     </div>
+    </div>
 </body>
+
 </html>
