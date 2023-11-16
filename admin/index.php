@@ -23,13 +23,13 @@
 
     <div class="card-container">
 
-        <a href="viewAdmins.php">
+        <a href="viewProfile.php">
             <div class="card">
                 <div class="card-header">
                     <img src="../assets/images/admin.png">
                 </div>
                 <div class="card-body">
-                    <p id="totalAttendance" class="card-value">Admins</p>
+                    <p id="totalAttendance" class="card-value">Profile</p>
                 </div>
             </div>
         </a>
