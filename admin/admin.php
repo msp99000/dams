@@ -419,7 +419,7 @@ class Admin
 
         // Execute the prepared statement
         if ($stmt->execute()) {
-            return true; // Instructor updated successfully
+            return true; // Admin updated successfully
         } else {
             return false; // Error occurred
         }
