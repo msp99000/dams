@@ -159,6 +159,7 @@ if (isset($_POST['addAdmin'])) {
 } elseif (isset($_POST['updateAdmin'])) {
 
     // Get the new user details from the form
+    echo "Hunter";
     $adminId = 101;
     $username = $_POST['username'];
     $firstName = $_POST['firstName'];
@@ -169,8 +170,8 @@ if (isset($_POST['addAdmin'])) {
     $password = $_POST['password'];
     $dob = $_POST['dob'];
 
-    // Call the update_user function
-    $result = $admin->update_admin($username, $firstName, $lastName, $gender, $email, $phone, $dob, $adminId, $gender, $adminId);
+    // Call the update_admin function
+    $result = $admin->update_admin($username, $firstName, $lastName, $email, $gender, $phone, $dob, $password, $adminId);
 
     if ($result) {
         echo "<script type = \"text/javascript\">
