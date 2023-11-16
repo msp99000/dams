@@ -13,7 +13,7 @@
       <li class="expander" id="admins-expander">
         <a class="nav-list" href="#">Attendance</a>
         <ul class="sub-list" id="admins-submenu">
-          <li><a href="viewAdmins.php">Instructor Attendance</a></li>
+          <li><a href="instructorAttendance.php">Instructor Attendance</a></li>
           <li><a href="addAdmin.php">Mark Attendance</a></li>
         </ul>
       </li>
@@ -49,7 +49,7 @@
         <ul class="sub-list" id="students-submenu">
           <li style="width: auto;"><a href="../scripts/logout.php">Logout</a></li>
           <li style="width: auto;"><a href="updateAdmin.php">Update Profile</a></li>
-          <li style="width: auto;"><a href="viewAdmins.php">View Profile</a></li>
+          <li style="width: auto;"><a href="viewProfile.php">View Profile</a></li>
         </ul>
       </li>
     </ul>
