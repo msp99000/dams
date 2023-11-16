@@ -1,12 +1,12 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card mb-4">
-        <div class="table-text">
-            <img src="../assets/images/admin.png" >
-            <div> 
-                Administrators
+            <div class="table-text">
+                <img src="../assets/images/admin.png">
+                <div>
+                    Admin Profile
+                </div>
             </div>
-        </div>
             <div class="card-body">
                 <div class="table-responsive p-3">
                     <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -43,4 +43,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
