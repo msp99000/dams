@@ -57,7 +57,7 @@ CREATE TABLE `classes` (
 );
 
 CREATE TABLE `schedules` (
-  `schedule_id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `schedule_id` INT(11) NOT NULL,
   `class_id` INT(11) DEFAULT NULL,
   `instructor_id` INT(11) DEFAULT NULL,
   `student_id` INT(11) DEFAULT NULL,
@@ -168,11 +168,11 @@ INSERT INTO `classes` (`class_id`, `section`, `course_id`, `session_id`) VALUES
 
 INSERT INTO `schedules` (`schedule_id`, `class_id`, `instructor_id`, `student_id`, `schedule`, `status`) VALUES
 (701, 601, 1135500, 1425366, '2018-01-16 11:00:00', 'Active'),
-(702, 601, 1135500, 1185665, '2018-01-16 11:00:00', 'Active'),
-(703, 601, 1135500, 1103261, '2018-01-16 11:00:00', 'Active'),
-(704, 602, 2437508, 1004576, '2018-01-16 11:00:00', 'Active'),
-(705, 602, 2437508, 1003421, '2018-01-16 11:00:00', 'Active'),
-(706, 602, 2437508, 1100432, '2018-01-16 11:00:00', 'Active');
+(701, 601, 1135500, 1185665, '2018-01-16 11:00:00', 'Active'),
+(701, 601, 1135500, 1103261, '2018-01-16 11:00:00', 'Active'),
+(702, 602, 2437508, 1004576, '2018-01-16 11:00:00', 'Active'),
+(702, 602, 2437508, 1003421, '2018-01-16 11:00:00', 'Active'),
+(702, 602, 2437508, 1100432, '2018-01-16 11:00:00', 'Active');
 
 INSERT INTO `leaves` (`leave_request_id`, `student_id`, `instructor_id`, `class_id`, `request_date`, `status`, `reason`, `response_date`) VALUES
 (1, 1100432, 2437508, 602, '2023-10-21', 'Pending', 'Sick leave', NULL);
