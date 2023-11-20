@@ -26,8 +26,8 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">All Student in (<?php echo $rrw['className'] . ' - ' . $rrw['classArmName']; ?>) Class</h6>
-                  <h6 class="m-0 font-weight-bold text-danger">Note: <i>Click on the checkboxes besides each student to take attendance!</i></h6>
+                  <h6 class="m-0 font-weight-bold text-primary">All Students in (<?php echo $rrw['className'] . ' - ' . $rrw['classArmName']; ?>) Class</h6>
+                  <h6 class="m-0 font-weight-bold text-danger">Note: <i>Click on the checkboxes beside each student to take attendance!</i></h6>
                 </div>
                 <div class="table-responsive p-3">
                   <?php echo $statusMsg; ?>
@@ -57,28 +57,30 @@
                       $rs = $conn->query($query);
                       $sn = 0;
                       $status = "";
-                      if ($rs) {
+                      $class_id = ''; // Move this line outside the loop
+
+                      if ($rs->num_rows > 0) {
                         while ($rows = $rs->fetch_assoc()) {
                           $sn++;
+                          $class_id = $rows['class_id']; // Set the value of $class_id in each iteration
+
                           echo "
-                              <tr>
-                                <td>" . $sn . "</td>
-                                <td>" . $rows['student_id'] . "</td>
-                                <td>" . $rows['first_name'] . "</td>
-                                <td>" . $rows['last_name'] . "</td>
-                                <td>" . $rows['course_id'] . "</td>
-                                <td>" . $rows['class_id'] . "</td>
-                                <td><input name='check[]' type='checkbox' value=" . $rows['student_id'] . " class='form-control'></td>
-                                <input name='admissionNo[]' value=" . $rows['student_id'] . " type='hidden' class='form-control'>
-                              </tr>";
+                                <tr>
+                                    <td>" . $sn . "</td>
+                                    <td>" . $rows['student_id'] . "</td>
+                                    <td>" . $rows['first_name'] . "</td>
+                                    <td>" . $rows['last_name'] . "</td>
+                                    <td>" . $rows['course_id'] . "</td>
+                                    <td>" . $rows['class_id'] . "</td>
+                                    <td><input name='check[]' type='checkbox' value=" . $rows['student_id'] . " class='form-control'></td>
+                                    <input name='admissionNo[]' value=" . $rows['student_id'] . " type='hidden' class='form-control'>
+                                </tr>";
                         }
                       } else {
-                        echo
-                        "<div class='alert alert-danger' role='alert'>
-                            No Record Found!
-                            </div>";
+                        echo "<div class='alert alert-danger' role='alert'>
+                                No Record Found!
+                              </div>";
                       }
-
                       ?>
                     </tbody>
                   </table>
@@ -87,14 +89,12 @@
                   <?php
                   if (isset($_POST['takeAttendance'])) {
                     $check = isset($_POST['check']) ? $_POST['check'] : [];
-                    echo "Hunter";
 
                     foreach ($check as $student_id) {
                       // Determine the status based on whether the checkbox is ticked
                       $attendanceStatus = isset($_POST['check'][$student_id]) ? 'Present' : 'Absent';
 
                       // Retrieve class_id from the initial fetch loop
-                      $class_id = $rows['class_id'];
                       $instructor_id = $_SESSION['instructor_id'];
                       $date = date("Y-m-d"); // Current date
 
