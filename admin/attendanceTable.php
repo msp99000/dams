@@ -31,9 +31,9 @@
                             </thead>
                             <tbody>
                                 <?php
-                                include "instructor.php";
-                                $admin = new Instructor();
-                                $users = $admin->list_attendance();
+                                include "../users.php";
+                                $admin = new User();
+                                $users = $admin->view_attendance();
 
                                 foreach ($users as $user) {
                                     echo "<tr>";
