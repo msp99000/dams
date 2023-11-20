@@ -70,12 +70,13 @@
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Password<span class="text-danger ml-2">*</span></label>
                                             <select class="form-control mb-3" id="class" name="class" required>
+                                                <option value="" disabled selected>-- Select --</option>
                                                 <?php
                                                 // Include the class file
-                                                require_once('../users.php');
+                                                require_once('../options.php');
 
                                                 // Create an instance of the DatabaseHandler class
-                                                $users = new User();
+                                                $users = new Options();
 
                                                 // Get class options
                                                 $classOptions = $users->classId_options();
@@ -84,9 +85,6 @@
                                                 foreach ($classOptions as $option) {
                                                     echo "<option value='" . $option . "'>" . $option . "</option>";
                                                 }
-
-                                                // Close the database connection
-                                                // $users->closeConnection();
                                                 ?>
                                             </select>
                                         </div>
