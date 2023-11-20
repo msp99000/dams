@@ -499,4 +499,34 @@ class Options
 
         return $options;
     }
+
+    public function studentId_options()
+    {
+        global $conn;
+
+        $query = "SELECT student_id FROM students";
+        $result = $conn->query($query);
+        $options = array(); // Create an array to store all class options
+
+        while ($row = $result->fetch_assoc()) {
+            $options[] = $row['student_id']; // Add each class option to the array
+        }
+
+        return $options;
+    }
+
+    public function instructorId_options()
+    {
+        global $conn;
+
+        $query = "SELECT instructor_id FROM instructors";
+        $result = $conn->query($query);
+        $options = array(); // Create an array to store all class options
+
+        while ($row = $result->fetch_assoc()) {
+            $options[] = $row['instructor_id']; // Add each class option to the array
+        }
+
+        return $options;
+    }
 }
