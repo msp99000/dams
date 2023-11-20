@@ -64,7 +64,7 @@ class UserAuth
             }
 
             if ($userType == "Student") {
-                // Fetch instructor ID using the new method
+                // Fetch student ID using the new method
                 $_SESSION['student_id'] = $this->getstudentId($username);
             }
 
