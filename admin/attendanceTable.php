@@ -31,8 +31,8 @@
                             </thead>
                             <tbody>
                                 <?php
-                                include "../users.php";
-                                $admin = new User();
+                                include "../options.php";
+                                $admin = new Options();
                                 $users = $admin->view_attendance();
 
                                 foreach ($users as $user) {
