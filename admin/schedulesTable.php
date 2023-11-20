@@ -3,7 +3,7 @@
         <h1 class="h3 mb-0 text-gray-800"></h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Instructor Panel</li>
+            <li class="breadcrumb-item active" aria-current="page">Admin Panel</li>
         </ol>
     </div>
     <div class="row">
