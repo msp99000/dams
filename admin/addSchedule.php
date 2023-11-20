@@ -35,17 +35,68 @@
                                         </div>
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Class ID<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="classId" id="exampleInputFirstName" placeholder="Class ID">
+                                            <select class="form-control mb-3" id="class" name="classId" required>
+                                                <option value="" disabled selected>-- Select --</option>
+                                                <?php
+                                                // Include the class file
+                                                require_once('../options.php');
+
+                                                // Create an instance of the DatabaseHandler class
+                                                $users = new Options();
+
+                                                // Get class options
+                                                $classOptions = $users->classId_options();
+
+                                                // Populate select options
+                                                foreach ($classOptions as $option) {
+                                                    echo "<option value='" . $option . "'>" . $option . "</option>";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Instructor ID<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="instrcutorId" id="exampleInputFirstName" placeholder="Instructor ID">
+                                            <select class="form-control mb-3" id="class" name="instructorId" required>
+                                                <option value="" disabled selected>-- Select --</option>
+                                                <?php
+                                                // Include the class file
+                                                require_once('../options.php');
+
+                                                // Create an instance of the DatabaseHandler class
+                                                $users = new Options();
+
+                                                // Get class options
+                                                $classOptions = $users->instructorId_options();
+
+                                                // Populate select options
+                                                foreach ($classOptions as $option) {
+                                                    echo "<option value='" . $option . "'>" . $option . "</option>";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Student ID<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="studentId" id="exampleInputFirstName" placeholder="Student ID">
+                                            <select class="form-control mb-3" id="class" name="studentId" required>
+                                                <option value="" disabled selected>-- Select --</option>
+                                                <?php
+                                                // Include the class file
+                                                require_once('../options.php');
+
+                                                // Create an instance of the DatabaseHandler class
+                                                $users = new Options();
+
+                                                // Get class options
+                                                $classOptions = $users->studentId_options();
+
+                                                // Populate select options
+                                                foreach ($classOptions as $option) {
+                                                    echo "<option value='" . $option . "'>" . $option . "</option>";
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
