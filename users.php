@@ -1,10 +1,10 @@
 <?php
-include "/config/connection.php";
+include "config/connection.php";
 
 $database = new Database();
 $conn = $database->getConnection();
 
-class Users
+class User
 {
 
     public function count_admins()
