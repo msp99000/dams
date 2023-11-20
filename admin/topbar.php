@@ -35,11 +35,42 @@
           <li><a href="updateStudent.php">Update Student</a></li>
         </ul>
       </li>
+      <li class="expander" id="students-expander">
+        <a class="nav-list" href="#">Courses</a>
+        <ul class="sub-list" id="students-submenu">
+          <li><a href="viewCourses.php">All Courses</a></li>
+          <li><a href="addCourse.php">Add Course</a></li>
+          <li><a href="removeCourse.php">Remove Course</a></li>
+        </ul>
+      </li>
+      <li class="expander" id="users-expander">
+        <a class="nav-list" href="#">Classes</a>
+        <ul class="sub-list" id="users-submenu">
+          <li><a href="viewClasses.php">View Classes</a></li>
+          <li><a href="addClass.php">Add New Class</a></li>
+          <li><a href="removeClass.php">Remove Class</a></li>
+          <li><a href="updateClass.php">Update Class</a></li>
+        </ul>
+      </li>
+      <li class="expander" id="instructors-expander">
+        <a class="nav-list" href="#">Schedules</a>
+        <ul class="sub-list" id="instructors-submenu">
+          <li><a href="viewSchedules.php">View Schedules</a></li>
+          <li><a href="addSchedule.php">Add New Schedule</a></li>
+          <li><a href="deleteSchedule.php">Delete Schedule</a></li>
+        </ul>
+      </li>
       <li class="expander" id="sessions-expander">
         <a class="nav-list" href="#">Sessions</a>
         <ul class="sub-list" id="sessions-submenu">
           <li><a href="viewSessions.php">View Sessions</a></li>
           <li><a href="addSession.php">Add New Session</a></li>
+        </ul>
+      </li>
+      <li class="expander" id="sessions-expander">
+        <a class="nav-list" href="#">Reports</a>
+        <ul class="sub-list" id="sessions-submenu">
+          <li><a href="viewReports.php">View Reports</a></li>
         </ul>
       </li>
       <li class="expander" id="students-expander">
