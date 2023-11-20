@@ -151,6 +151,21 @@ class Users
         }
     }
 
+    public function view_attendance()
+    {
+        global $conn;
+
+        $query = "SELECT * FROM attendance";
+        $rs = $conn->query($query);
+        $users = array(); // Create an array to store all user rows
+
+        while ($row = $rs->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        return $users;
+    }
+
     public function list_admins()
     {
         global $conn;
