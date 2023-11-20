@@ -484,4 +484,19 @@ class User
 
         return $users;
     }
+
+    public function classId_options()
+    {
+        global $conn;
+
+        $query = "SELECT class_id FROM classes";
+        $result = $conn->query($query);
+        $options = array(); // Create an array to store all class options
+
+        while ($row = $result->fetch_assoc()) {
+            $options[] = $row['class_id']; // Add each class option to the array
+        }
+
+        return $options;
+    }
 }
