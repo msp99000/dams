@@ -44,6 +44,7 @@
                     <form method='post'>
                       <input type='hidden' name='leaveRequestId' value='{$row['leave_request_id']}'>
                       <button type='submit' name='approveLeave'>Approve</button>
+                      <button type='submit' name='denyLeave'>Deny</button>
                     </form>
                   </div>";
                             }
@@ -71,6 +72,23 @@
         } else {
             echo "<div class='alert alert-danger' role='alert'>
               Error approving leave request: " . $conn->error . "
+            </div>";
+        }
+    }
+
+    if (isset($_POST['denyLeave'])) {
+        $leaveRequestId = $_POST['leaveRequestId'];
+
+        // Update the status of the leave request to 'Denied'
+        $updateQuery = "UPDATE leaves SET status = 'Denied', response_date = CURDATE() WHERE leave_request_id = '$leaveRequestId'";
+
+        if ($conn->query($updateQuery) === TRUE) {
+            echo "<div class='alert alert-success' role='alert'>
+              Leave request denied successfully!
+            </div>";
+        } else {
+            echo "<div class='alert alert-danger' role='alert'>
+              Error denying leave request: " . $conn->error . "
             </div>";
         }
     }
