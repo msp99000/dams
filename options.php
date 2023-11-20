@@ -529,4 +529,19 @@ class Options
 
         return $options;
     }
+
+    public function get_instId($username)
+    {
+        global $conn;
+
+        $query = "SELECT instructor_id FROM instructors WHERE username='$username'";
+        $result = $conn->query($query);
+        $options = array(); // Create an array to store all class options
+
+        while ($row = $result->fetch_assoc()) {
+            $options[] = $row['instructor_id']; // Add each class option to the array
+        }
+
+        return $options;
+    }
 }
