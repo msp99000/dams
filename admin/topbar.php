@@ -14,7 +14,7 @@
         <a class="nav-list" href="#">Attendance</a>
         <ul class="sub-list" id="admins-submenu">
           <li><a href="viewAttendance.php">View Attendance</a></li>
-          <li><a href="addAdmin.php">Mark Attendance</a></li>
+          <li><a href="markAttendance.php">Mark Attendance</a></li>
         </ul>
       </li>
       <li class="expander" id="instructors-expander">
