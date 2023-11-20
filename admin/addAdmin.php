@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <?php include "heads.php"; ?> 
+    <?php include "heads.php"; ?>
 </head>
+
 <body id="page-top">
     <?php include "topbar.php"; ?>
     <div id="content-wrapper" class="d-flex flex-column">
@@ -11,7 +13,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card mb-4">
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
                                 <h1 class="h3 mb-0 text-gray-800"></h1>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -40,7 +42,7 @@
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Gender<span class="text-danger ml-2">*</span></label>
                                             <select class="form-control mb-3" name="gender" required>
-                                                <option> -- Select -- </option >
+                                                <option> -- Select -- </option>
                                                 <option value="1">Male</option>
                                                 <option value="2">Female</option>
                                             </select>
@@ -74,7 +76,6 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- <?php include "adminsTable.php"; ?> -->
                         <?php include "../components/footer.php"; ?>
                     </div>
                 </div>
@@ -82,4 +83,5 @@
         </div>
     </div>
 </body>
+
 </html>
