@@ -9,12 +9,12 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-4">
-            <div class="table-text">
-                <img src="../assets/images/schedules.png" >
-                <div> 
-                    Schedules
+                <div class="table-text">
+                    <img src="../assets/images/schedules.png">
+                    <div>
+                        Schedules
+                    </div>
                 </div>
-            </div>
                 <div class="card-body">
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -23,15 +23,15 @@
                                     <th>Schedule ID</th>
                                     <th>Class ID</th>
                                     <th>Instructor ID</th>
-                                    <th>Course ID</th>
+                                    <th>Student ID</th>
                                     <th>Schedule</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                include "instructor.php";
-                                $admin = new Instructor();
+                                include "admin.php";
+                                $admin = new Admin();
                                 $users = $admin->list_schedules();
 
                                 foreach ($users as $user) {
@@ -39,7 +39,7 @@
                                     echo "<td>" . $user['schedule_id'] . "</td>";
                                     echo "<td>" . $user['class_id'] . "</td>";
                                     echo "<td>" . $user['instructor_id'] . "</td>";
-                                    echo "<td>" . $user['course_id'] . "</td>";
+                                    echo "<td>" . $user['student_id'] . "</td>";
                                     echo "<td>" . $user['schedule'] . "</td>";
                                     echo "<td>" . $user['status'] . "</td>";
                                     echo "</tr>";
@@ -51,5 +51,5 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
