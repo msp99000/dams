@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <?php include "heads.php"; ?> 
+    <?php include "heads.php"; ?>
 </head>
+
 <body id="page-top">
     <?php include "topbar.php"; ?>
     <div class="container-fluid">
@@ -17,14 +19,14 @@
                         </ol>
                     </div>
                     <div class="table-text">
-                        <img src="../assets/images/teacher.png">
+                        <img src="../assets/images/student.png">
                         <div>
-                            Edit Student
+                            Update Student
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="post" action="process.php">
-                        <div class="form-group row mb-3">
+                            <div class="form-group row mb-3">
                                 <div class="col-xl-6">
                                     <label class="form-control-label">Student ID<span class="text-danger ml-2">*</span></label>
                                     <input type="text" class="form-control" name="studentId" id="exampleInputFirstName" placeholder="Student ID" required>
@@ -60,7 +62,8 @@
                                     <input type="date" class="form-control" name="dob" id="exampleInputFirstName" placeholder="Date of Birth" required>
                                 </div>
                                 <div class="col-xl-6">
-                                    <!-- Empty -->
+                                    <label class="form-control-label">Password<span class="text-danger ml-2">*</span></label>
+                                    <input type="password" class="form-control" name="password" id="exampleInputFirstName" placeholder="Password" required>
                                 </div>
                             </div>
                             <button type="submit" name="updateStudent" class="btn btn-primary">Update</button>
@@ -73,4 +76,5 @@
         </div>
     </div>
 </body>
+
 </html>
