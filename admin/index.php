@@ -99,6 +99,18 @@
                 </div>
             </div>
         </a>
+
+        <a href="viewSchedules.php">
+            <div class="card">
+                <div class="card-header">
+                    <img src="../assets/images/schedules.png">
+                </div>
+                <div class="card-body">
+                    <p id="totalTerms" class="card-value">Schedules</p>
+                </div>
+            </div>
+        </a>
+
     </div>
     <?php include "../components/footer.php"; ?>
 </body>
