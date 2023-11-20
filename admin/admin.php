@@ -166,6 +166,21 @@ class Admin
         return $users;
     }
 
+    public function list_schedules()
+    {
+        global $conn;
+
+        $query = "SELECT * FROM schedules";
+        $rs = $conn->query($query);
+        $users = array(); // Create an array to store all user rows
+
+        while ($row = $rs->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        return $users;
+    }
+
     public function add_admin($firstName, $lastName, $gender, $dob, $email, $phone, $username, $password)
     {
         global $conn;
