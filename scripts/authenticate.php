@@ -1,14 +1,36 @@
 <?php
 
-class UserAuth {
+class UserAuth
+{
     private $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         $this->conn = $conn;
     }
 
-    public function login($userType, $username, $password) {
-       
+    // New method to get instructor ID
+    public function getInstructorId($username)
+    {
+        $query = "SELECT instructor_id FROM instructors WHERE username = '$username'";
+        $rs = $this->conn->query($query);
+        $row = $rs->fetch_assoc();
+
+        return $row ? $row['instructor_id'] : null;
+    }
+
+    // New method to get student ID
+    public function getStudentId($username)
+    {
+        $query = "SELECT student_id FROM students WHERE username = '$username'";
+        $rs = $this->conn->query($query);
+        $row = $rs->fetch_assoc();
+
+        return $row ? $row['student_id'] : null;
+    }
+
+    public function login($userType, $username, $password)
+    {
         $password = md5($password);
 
         if ($userType == "Administrator") {
@@ -16,7 +38,7 @@ class UserAuth {
         } elseif ($userType == "Instructor") {
             $query = "SELECT * FROM instructors WHERE username = '$username' AND password = '$password' ";
         } elseif ($userType == "Student") {
-            $query = "SELECT * FROM students WHERE username = '$username' AND password = '$password' "; 
+            $query = "SELECT * FROM students WHERE username = '$username' AND password = '$password' ";
         } else {
             return "Invalid Username/Password!";
         }
@@ -33,15 +55,22 @@ class UserAuth {
             $_SESSION['firstName'] = $rows['first_name'];
             $_SESSION['lastName'] = $rows['last_name'];
             $_SESSION['emailAddress'] = $rows['email'];
+
             if ($userType == "Instructor") {
+                // Fetch instructor ID using the new method
+                $_SESSION['instructor_id'] = $this->getInstructorId($username);
                 $_SESSION['classId'] = $rows['class_id'];
                 $_SESSION['courseId'] = $rows['course_id'];
-            } 
+            }
+
+            if ($userType == "Student") {
+                // Fetch instructor ID using the new method
+                $_SESSION['student_id'] = $this->getstudentId($username);
+            }
+
             return true; // Successful login
         } else {
             return "Invalid Username/Password!";
         }
     }
 }
-
-?>
