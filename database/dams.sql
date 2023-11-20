@@ -1,4 +1,3 @@
--- Create tables
 CREATE TABLE `admins` (
   `admin_id` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) DEFAULT NULL,
@@ -96,7 +95,6 @@ CREATE TABLE `leaves` (
   FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
 );
 
--- Insert data
 INSERT INTO `admins` (`admin_id`, `username`, `first_name`, `last_name`, `email`, `gender`, `password`, `phone`, `dob`) VALUES
 (101, 'admin', 'Admin', 'One', 'admin@mail.com', 'Male', '827ccb0eea8a706c4c34a16891f84e7b', 17345478924, '1989-03-01');
 
