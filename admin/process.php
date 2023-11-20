@@ -179,6 +179,38 @@ if (isset($_POST['addAdmin'])) {
     } else {
         echo "<p>An error occurred while updating user.</p>";
     }
+} elseif (isset($_POST['addCourse'])) {
+
+    $courseName = $_POST['courseName'];
+    $courseCode = $_POST['courseCode'];
+
+    $result = $admin->add_course($courseName, $courseCode);
+
+    if ($result) {
+        echo "<script type = \"text/javascript\">
+                    window.location = (\"addCourse.php\")
+              </script>";
+    } else {
+        echo "<p>An error occurred while updating.</p>";
+    }
+} elseif (isset($_POST['addSchedule'])) {
+
+    $scheduleId = $_POST['scheduleId'];
+    $classId = $_POST['classId'];
+    $instructorId = $_POST['instructorId'];
+    $studentId = $_POST['studentId'];
+    $schedule = $_POST['schedule'];
+    $status = $_POST['status'];
+
+    $result = $admin->add_schedule($scheduleId, $classId, $instructorId, $studentId, $schedule, $status);
+
+    if ($result) {
+        echo "<script type = \"text/javascript\">
+                    window.location = (\"addSchedule.php\")
+              </script>";
+    } else {
+        echo "<p>An error occurred while updating.</p>";
+    }
 } else {
     $alertMessage = "Invalid request.";
 }
