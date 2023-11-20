@@ -276,6 +276,51 @@ class Admin
         }
     }
 
+    public function add_course($courseName, $courseCode)
+    {
+        global $conn;
+
+        // Prepare the SQL statement with placeholders
+        $query = "INSERT INTO courses (course_name, course_code) 
+                  VALUES (?, ?)";
+
+        // Create a prepared statement
+        $stmt = $conn->prepare($query);
+
+        // Bind parameters to the prepared statement
+        $stmt->bind_param("ss", $courseName, $courseCode);
+
+        // Execute the prepared statement
+        if ($stmt->execute()) {
+            return true; // User added successfully
+        } else {
+            return false; // Error occurred
+        }
+    }
+
+    public function add_schedule($scheduleId, $classId, $instructorId, $studentId, $schedule, $status)
+    {
+        global $conn;
+
+        // Prepare the SQL statement with placeholders
+        $query = "INSERT INTO schedules (schedule_id, class_id, instructor_id, student_id, schedule, `status`) 
+                  VALUES (?, ?, ?, ?, ?, ?)";
+
+        // Create a prepared statement
+        $stmt = $conn->prepare($query);
+
+        // Bind parameters to the prepared statement
+        $stmt->bind_param("iiiiss", $scheduleId, $classId, $instructorId, $studentId, $schedule, $status);
+
+        // Execute the prepared statement
+        if ($stmt->execute()) {
+            return true; // User added successfully
+        } else {
+            return false; // Error occurred
+        }
+    }
+
+
     public function add_session($sessionName, $year, $startDate, $endDate)
     {
         global $conn;
