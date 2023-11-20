@@ -13,7 +13,7 @@
       <li class="expander" id="admins-expander">
         <a class="nav-list" href="#">Attendance</a>
         <ul class="sub-list" id="admins-submenu">
-          <li><a href="instructorAttendance.php">Instructor Attendance</a></li>
+          <li><a href="viewAttendance.php">View Attendance</a></li>
           <li><a href="addAdmin.php">Mark Attendance</a></li>
         </ul>
       </li>
