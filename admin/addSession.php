@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php include "heads.php"; ?>
 </head>
+
 <body id="page-top">
     <?php include "topbar.php"; ?>
     <div id="content-wrapper" class="d-flex flex-column">
@@ -50,7 +52,6 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- <?php include "sessionsTable.php"; ?> -->
                         <?php include "../components/footer.php"; ?>
                     </div>
                 </div>
@@ -58,4 +59,5 @@
         </div>
     </div>
 </body>
+
 </html>
