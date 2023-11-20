@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-   <?php include "heads.php"; ?> 
+    <?php include "heads.php"; ?>
 </head>
+
 <body id="page-top">
     <?php include "topbar.php"; ?>
     <div class="container-fluid">
@@ -24,7 +26,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="process.php">
-                        <div class="form-group row mb-3">
+                            <div class="form-group row mb-3">
                                 <div class="col-xl-6">
                                     <label class="form-control-label">Instructor ID<span class="text-danger ml-2">*</span></label>
                                     <input type="text" class="form-control" name="instructorId" id="exampleInputFirstName" placeholder="Instructor ID" required>
@@ -67,11 +69,11 @@
                         </form>
                     </div>
                 </div>
-                <!-- <?php include "instructorsTable.php"; ?> -->
                 <?php include "../components/footer.php"; ?>
-                </div>
             </div>
         </div>
     </div>
+    </div>
 </body>
+
 </html>
