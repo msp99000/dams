@@ -31,32 +31,27 @@
                                     <div class="form-group row mb-3">
                                         <div class="col-xl-6">
                                             <label class="form-control-label">First Name<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="firstName" id="exampleInputFirstName"
-                                                placeholder="First Name">
+                                            <input type="text" class="form-control" name="firstName" id="exampleInputFirstName" placeholder="First Name">
                                         </div>
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Last Name<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="lastName" id="exampleInputFirstName"
-                                                placeholder="Last Name">
+                                            <input type="text" class="form-control" name="lastName" id="exampleInputFirstName" placeholder="Last Name">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Email Address<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="email" id="exampleInputFirstName"
-                                                placeholder="Email Address">
+                                            <input type="text" class="form-control" name="email" id="exampleInputFirstName" placeholder="Email Address">
                                         </div>
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Date of Birth<span class="text-danger ml-2">*</span></label>
-                                            <input type="date" class="form-control" name="dob" id="exampleInputFirstName"
-                                                placeholder="DOB">
+                                            <input type="date" class="form-control" name="dob" id="exampleInputFirstName" placeholder="DOB">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-3">
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Phone Number<span class="text-danger ml-2">*</span></label>
-                                            <input type="text" class="form-control" name="phone" id="exampleInputFirstName"
-                                                placeholder="Phone Number">
+                                            <input type="text" class="form-control" name="phone" id="exampleInputFirstName" placeholder="Phone Number">
                                         </div>
                                         <div class="col-xl-6">
                                             <label class="form-control-label">Username<span class="text-danger ml-2">*</span></label>
@@ -67,7 +62,6 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- <?php include "instructorsTable.php"; ?> -->
                         <?php include "../components/footer.php"; ?>
                     </div>
                 </div>
