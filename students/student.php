@@ -23,6 +23,38 @@ class Student
         }
     }
 
+    public function view_classes()
+    {
+        global $conn;
+
+        $query = "SELECT * FROM `classes`";
+        $rs = $conn->query($query);
+        $users = array(); // Create an array to store all user rows
+
+        while ($row = $rs->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        return $users;
+    }
+
+    public function my_attendance()
+    {
+        global $conn;
+
+        $studentId = $_SESSION['student_id'];
+        $query = "SELECT * FROM attendance WHERE student_id='$studentId'";
+        $rs = $conn->query($query);
+        $users = array(); // Create an array to store all user rows
+
+        while ($row = $rs->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        return $users;
+    }
+
+
     public function count_students()
     {
         global $conn;
@@ -146,6 +178,39 @@ class Student
         while ($row = $rs->fetch_assoc()) {
             $users[] = $row; // Add each user row to the array
         }
+
+        return $users;
+    }
+
+    public function my_leave_requests($user)
+    {
+        global $conn;
+
+        // Use prepared statement to prevent SQL injection
+        $query = "SELECT * FROM leaves WHERE student_id = ?";
+
+        // Prepare the statement
+        $stmt = $conn->prepare($query);
+
+        // Bind the parameter
+        $stmt->bind_param("i", $user);
+
+        // Execute the statement
+        $stmt->execute();
+
+        // Get the result
+        $result = $stmt->get_result();
+
+        // Create an array to store all user rows
+        $users = array();
+
+        // Fetch each row
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        // Close the statement
+        $stmt->close();
 
         return $users;
     }
