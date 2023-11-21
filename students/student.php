@@ -73,6 +73,22 @@ class Student
         return $users;
     }
 
+    public function my_schedules()
+    {
+        global $conn;
+
+        $studentId = $_SESSION['student_id'];
+        $query = "SELECT * FROM schedules WHERE student_id='$studentId'";
+        $rs = $conn->query($query);
+        $users = array(); // Create an array to store all user rows
+
+        while ($row = $rs->fetch_assoc()) {
+            $users[] = $row; // Add each user row to the array
+        }
+
+        return $users;
+    }
+
     public function count_students()
     {
         global $conn;
