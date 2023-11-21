@@ -13,15 +13,14 @@
       <li class="expander" id="students-expander">
         <a class="nav-list" href="#">Attendance</a>
         <ul class="sub-list" id="students-submenu">
-          <li><a href="viewAttendance.php">View Attedance</a></li>
-          <li><a href="markAttendance.php">Attedance Reports</a></li>
+          <li><a href="myAttendance.php">View Attedance</a></li>
         </ul>
       </li>
       <li class="expander" id="users-expander">
         <a class="nav-list" href="#">Classes</a>
         <ul class="sub-list" id="users-submenu">
           <li><a href="viewClasses.php">All Classes</a></li>
-          <li><a href="addClass.php">Upcoming Classes</a></li>
+          <li><a href="classSchedules.php">My Classes</a></li>
         </ul>
       </li>
       <li class="expander" id="instructors-expander">
@@ -34,7 +33,7 @@
       <li class="expander" id="instructors-expander">
         <a class="nav-list" href="#">Schedules</a>
         <ul class="sub-list" id="instructors-submenu">
-          <li><a href="viewSchedules.php">View Schedules</a></li>
+          <li><a href="classSchedules.php">View Schedules</a></li>
         </ul>
       </li>
       <li class="expander" id="students-expander">
