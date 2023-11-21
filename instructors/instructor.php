@@ -287,13 +287,4 @@ class Instructor
             return false; // Error occurred
         }
     }
-
-    // public function getInstructorId($username)
-    // {
-    //     $query = "SELECT instructor_id FROM instructors WHERE username = '$username'";
-    //     $rs = $this->conn->query($query);
-    //     $row = $rs->fetch_assoc();
-
-    //     return $row ? $row['instructor_id'] : null;
-    // }
 }
