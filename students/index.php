@@ -32,7 +32,7 @@
             </div>
         </a>
 
-        <a href="myClasses.php">
+        <a href="viewClasses.php">
             <div class="card">
                 <div class="card-header">
                     <img src="../assets/images/classes.png">
@@ -65,7 +65,7 @@
             </div>
         </a>
 
-        <a href="leaveRequests.php">
+        <a href="viewLeaves.php">
             <div class="card">
                 <div class="card-header">
                     <img src="../assets/images/leaves.png">
