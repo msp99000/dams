@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="brand">
-        <img src="../assets/images/brand.png" style="max-width: 60px; margin-right:24px" >
+      <img src="../assets/images/brand.png" style="max-width: 60px; margin-right:24px">
       <a href="index.php" style="color: white; text-decoration: none;">D A M S</a>
     </div>
     <div class="mobile-menu-button">
@@ -27,8 +27,8 @@
       <li class="expander" id="instructors-expander">
         <a class="nav-list" href="#">Leaves</a>
         <ul class="sub-list" id="instructors-submenu">
-          <li><a href="viewLeaves.php">New Leave Request</a></li>
-          <li><a href="manageLeaves.php">All Leave Requests</a></li>
+          <li><a href="leaveRequest.php">New Leave Request</a></li>
+          <li><a href="viewLeaves.php">All Leave Requests</a></li>
         </ul>
       </li>
       <li class="expander" id="instructors-expander">
@@ -42,9 +42,9 @@
           <img src="../assets/images/student.svg" style="max-width: 25px">
         </a>
         <ul class="sub-list" id="students-submenu">
-          <li style="width: auto;" ><a href="../scripts/logout.php">Logout</a></li>
+          <li style="width: auto;"><a href="../scripts/logout.php">Logout</a></li>
         </ul>
-      </li> 
+      </li>
     </ul>
   </div>
 </nav>
