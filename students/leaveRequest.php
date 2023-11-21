@@ -26,60 +26,41 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="process.php">
-                            <div class="form-group row mb-3">
-                                <div class="col-xl-6">
-                                    <label for="reason">Reason for Leave:</label>
-                                    <textarea class="form-control" id="reason" name="reason" rows="4" required></textarea>
-                                </div>
-                                <div class="col-xl-6">
-                                    <!-- empty  -->
-                                </div>
+                            <div class="form-group">
+                                <label for="reason">Reason for Leave:</label>
+                                <textarea class="form-control" id="reason" name="reason" rows="4" required></textarea>
                             </div>
-                            <div class="form-group row mb-3">
-                                <div class="col-xl-6">
-                                    <label class="form-control-label">Instructor ID<span class="text-danger ml-2">*</span></label>
-                                    <select class="form-control mb-3" id="class" name="instructorId" required>
-                                        <option value="" disabled selected>-- Select --</option>
-                                        <?php
-                                        // Include the class file
-                                        require_once('../options.php');
+                            <div class="form-group">
+                                <label for="classId">Class ID:</label>
+                                <select class="form-control" id="classId" name="classId" required>
+                                    <option value="" disabled selected>-- Select Class --</option>
+                                    <?php
+                                    // Fetch and populate class options from the database
+                                    $query = "SELECT class_id FROM classes";
+                                    $result = $conn->query($query);
 
-                                        // Create an instance of the DatabaseHandler class
-                                        $users = new Options();
-
-                                        // Get class options
-                                        $classOptions = $users->instructorId_options();
-
-                                        // Populate select options
-                                        foreach ($classOptions as $option) {
-                                            echo "<option value='" . $option . "'>" . $option . "</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <!-- <div class="col-xl-6">
-                                    <label class="form-control-label">Class ID<span class="text-danger ml-2">*</span></label>
-                                    <select class="form-control mb-3" id="class" name="classId" required>
-                                        <option value="" disabled selected>-- Select --</option>
-                                        <?php
-                                        // Include the class file
-                                        require_once('../options.php');
-
-                                        // Create an instance of the DatabaseHandler class
-                                        $users = new Options();
-
-                                        // Get class options
-                                        $classOptions = $users->classId_options();
-
-                                        // Populate select options
-                                        foreach ($classOptions as $option) {
-                                            echo "<option value='" . $option . "'>" . $option . "</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div> -->
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row['class_id'] . "'>" . $row['class_id'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
                             </div>
-                            <button type="submit" name="addAdmin" class="btn btn-primary">Add</button>
+                            <div class="form-group">
+                                <label for="instructorId">Instructor ID:</label>
+                                <select class="form-control" id="instructorId" name="instructorId" required>
+                                    <option value="" disabled selected>-- Select Instructor --</option>
+                                    <?php
+                                    // Fetch and populate instructor options from the database
+                                    $query = "SELECT instructor_id FROM instructors";
+                                    $result = $conn->query($query);
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<option value='" . $row['instructor_id'] . "'>" . $row['instructor_id'] . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <button type="submit" name="submitLeave" class="btn btn-primary">Submit Leave Request</button>
                         </form>
                     </div>
                 </div>
@@ -91,12 +72,12 @@
     if (isset($_POST['submitLeave'])) {
         $studentId = $_SESSION['student_id'];
         $reason = $_POST['reason'];
-        $instructorId = $_POST['instructorId'];
         $classId = $_POST['classId'];
+        $instructorId = $_POST['instructorId'];
 
         // Insert leave request into the database
-        $insertQuery = "INSERT INTO leaves (student_id, instructor_id, class_id, reason, request_date, `status`) 
-                    VALUES ('$studentId', '$instructorId', '$classId', '$reason', CURDATE(), 'Pending')";
+        $insertQuery = "INSERT INTO leaves (student_id, class_id, instructor_id, reason, request_date, `status`) 
+                    VALUES ('$studentId', '$classId', '$instructorId', '$reason', CURDATE(), 'Pending')";
 
         if ($conn->query($insertQuery) === TRUE) {
             echo "<div class='alert alert-success' role='alert'>
