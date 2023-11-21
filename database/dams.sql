@@ -108,10 +108,10 @@ INSERT INTO `instructors` (`instructor_id`, `username`, `first_name`, `last_name
 INSERT INTO `students` (`student_id`, `username`, `first_name`, `last_name`, `email`, `phone`, `dob`, `password`) VALUES
 (1100432, 'student', 'Student', 'One', 'student@mail.com', 13447118819, '2006-02-07', '827ccb0eea8a706c4c34a16891f84e7b'),
 (1003421, 'travis', 'Travis', 'Hopkins', 'travis@mail.com', 19045052911, '2006-02-13', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1004576, 'chow', 'Chow', 'Ding', 'chow@mail.com', 12005058821, '2007-09-02', '7a53bde2dde88f0a9c39794f6567cdf5'),
-(1103261, 'raj', 'Raj', 'kc', 'raj@student.com', 9842025566, '2023-07-05', '65a1223dae83b8092c4edba0823a793c'),
-(1185665, 'brb', 'BRB', 'brb', 'brb@student.com', 9402256656, '2023-10-10', 'b992bdb865efa8b3b7333d0458323f4e'),
-(1425366, 'dhreej', 'Dhreej', 'Dhreej', 'dhreej@student.com', 94253665222, '2023-10-10', 'b850ec547891bb8665dede6deda28a6e');
+(1004576, 'chow', 'Chow', 'Ding', 'chow@mail.com', 12005058821, '2007-09-02', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1103261, 'raj', 'Raj', 'kc', 'raj@student.com', 9842025566, '2023-07-05', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1185665, 'brb', 'BRB', 'brb', 'brb@student.com', 9402256656, '2023-10-10', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1425366, 'dhreej', 'Dhreej', 'Dhreej', 'dhreej@student.com', 94253665222, '2023-10-10', '827ccb0eea8a706c4c34a16891f84e7b');
 
 INSERT INTO `sessions` (`session_id`, `session_name`, `year`, `start_date`, `end_date`) VALUES 
 (1001, 'Summer 2018', '2018', '2018-01-15', '2018-03-30'),
