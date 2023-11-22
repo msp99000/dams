@@ -100,18 +100,16 @@ INSERT INTO `admins` (`admin_id`, `username`, `first_name`, `last_name`, `email`
 
 INSERT INTO `instructors` (`instructor_id`, `username`, `first_name`, `last_name`, `email`, `phone`, `dob`, `password`) VALUES
 (1135500, 'john', 'John', 'Doe', 'john@mail.com', 15646471226, '1996-10-03', '827ccb0eea8a706c4c34a16891f84e7b'),
-(2437508, 'hunter', 'Hunter', 'Adams', 'hunter@mail.com', 14375878626, '1995-04-11', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1790009, 'dan', 'Dan', 'Blitz', 'danny@mail.com', 13555471922, '1992-02-09', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1008412, 'tim', 'Tim', 'Ruscia', 'tim@mail.com', 14446478330, '1991-12-17', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1122565, 'deepa', 'Deepa', 'G', 'deepa@gmail.com', 9402252236, '2023-10-09', '29987ce14a9c7b9137f616843eca049b');
+(1135501, 'tony', 'Tony', 'Stark', 'tony@mail.com', 14375878626, '1995-04-11', '827ccb0eea8a706c4c34a16891f84e7b');
 
 INSERT INTO `students` (`student_id`, `username`, `first_name`, `last_name`, `email`, `phone`, `dob`, `password`) VALUES
-(1100432, 'student', 'Student', 'One', 'student@mail.com', 13447118819, '2006-02-07', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1003421, 'travis', 'Travis', 'Hopkins', 'travis@mail.com', 19045052911, '2006-02-13', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1004576, 'chow', 'Chow', 'Ding', 'chow@mail.com', 12005058821, '2007-09-02', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1103261, 'raj', 'Raj', 'kc', 'raj@student.com', 9842025566, '2023-07-05', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1185665, 'brb', 'BRB', 'brb', 'brb@student.com', 9402256656, '2023-10-10', '827ccb0eea8a706c4c34a16891f84e7b'),
-(1425366, 'dhreej', 'Dhreej', 'Dhreej', 'dhreej@student.com', 94253665222, '2023-10-10', '827ccb0eea8a706c4c34a16891f84e7b');
+(1100430, 'travis', 'Travis', 'Hopkins', 'travis@mail.com', 19045052911, '2006-02-13', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1100431, 'chow', 'Chow', 'Ding', 'chow@mail.com', 12005058821, '2007-09-02', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1100432, 'jane_smith', 'Jane', 'Smith', 'jane.smith@mail.com', 15551234567, '1998-05-20', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1100433, 'michael23', 'Michael', 'Johnson', 'michael@mail.com', 17815553344, '1999-11-15', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1100434, 'susan22', 'Susan', 'Williams', 'susan@mail.com', 19847651234, '1997-04-08', '827ccb0eea8a706c4c34a16891f84e7b'),
+(1100435, 'david.miller', 'David', 'Miller', 'david.miller@mail.com', 12019876543, '1996-08-25', '827ccb0eea8a706c4c34a16891f84e7b');
+
 
 INSERT INTO `sessions` (`session_id`, `session_name`, `year`, `start_date`, `end_date`) VALUES 
 (1001, 'Summer 2018', '2018', '2018-01-15', '2018-03-30'),
@@ -162,19 +160,19 @@ INSERT INTO `courses` (`course_id`, `course_name`, `course_code`) VALUES
 
 INSERT INTO `classes` (`class_id`, `section`, `course_id`, `session_id`) VALUES
 (601, 'Section 001', 501, 1001),
-(602, 'Section 002', 502, 1001);
+(602, 'Section 002', 510, 1001);
 
 INSERT INTO `schedules` (`schedule_id`, `class_id`, `instructor_id`, `student_id`, `schedule`, `status`) VALUES
-(701, 601, 1135500, 1425366, '2018-01-16 11:00:00', 'Active'),
-(701, 601, 1135500, 1185665, '2018-01-16 11:00:00', 'Active'),
-(701, 601, 1135500, 1103261, '2018-01-16 11:00:00', 'Active'),
-(702, 602, 2437508, 1004576, '2018-01-17 15:00:00', 'Active'),
-(702, 602, 2437508, 1003421, '2018-01-17 15:00:00', 'Active'),
-(702, 602, 2437508, 1100432, '2018-01-17 15:00:00', 'Active');
+(701, 601, 1135500, 1100430, '2018-01-16 11:00:00', 'Active'),
+(701, 601, 1135500, 1100431, '2018-01-16 11:00:00', 'Active'),
+(701, 601, 1135500, 1100432, '2018-01-16 11:00:00', 'Active'),
+(702, 602, 1135501, 1100433, '2018-01-17 15:00:00', 'Active'),
+(702, 602, 1135501, 1100434, '2018-01-17 15:00:00', 'Active'),
+(702, 602, 1135501, 1100435, '2018-01-17 15:00:00', 'Active');
 
 INSERT INTO `leaves` (`leave_request_id`, `student_id`, `instructor_id`, `class_id`, `request_date`, `status`, `reason`, `response_date`) VALUES
-(1, 1100432, 2437508, 602, '2023-10-21', 'Pending', 'Sick leave', NULL),
-(2, 1103261, 1135500, 601, '2023-11-21', 'Pending', 'Sick leave', NULL);
+(1001, 11003550, , 602, '2023-10-21', 'Pending', 'Sick leave', NULL),
+(1002, 11003550, 1135500, 601, '2023-11-21', 'Pending', 'Sick leave', NULL);
 
 INSERT INTO `attendance` (`attendance_id`, `class_id`, `instructor_id`, `student_id`, `course_id`, `date`, `status`) VALUES
 (1, 602, 2437508, 1100432, 501, '2023-10-21', 'Present');
