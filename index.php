@@ -32,7 +32,7 @@
                         <input type="submit" class="rounded-button" name="login-button" value="Login">
                     </div>
                     <div class="forgot-password-link">
-                        <a href="forgot_password.php">Forgot Password?</a>
+                        <a href="config/forgotPassword.php">Forgot Password?</a>
                     </div>
             </form>
         </div>
