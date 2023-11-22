@@ -73,4 +73,45 @@ class UserAuth
             return "Invalid Username/Password!";
         }
     }
+
+    public function sendPasswordResetEmail($userType, $username)
+    {
+        // $newPassword = $this->generateRandomPassword(); // Generate a new password
+        $newPassword = 0000; // Generate a new password
+        $hashedPassword = md5($newPassword);
+
+        $updateQuery = "";
+
+        if ($userType == "Administrator") {
+            $updateQuery = "UPDATE admins SET password = '$hashedPassword' WHERE username = '$username'";
+        } elseif ($userType == "Instructor") {
+            $updateQuery = "UPDATE instructors SET password = '$hashedPassword' WHERE username = '$username'";
+        } elseif ($userType == "Student") {
+            $updateQuery = "UPDATE students SET password = '$hashedPassword' WHERE username = '$username'";
+        } else {
+            return "Invalid user type.";
+        }
+
+        $result = $this->conn->query($updateQuery);
+
+        if ($result) {
+            // Send password reset email
+            // $emailSender = new EmailSender();
+            // $emailSender->sendResetPasswordEmail($username, $newPassword);
+            echo "<h4 style='color:green;'>Email with password sent successfully</h4>";
+            return true;
+        } else {
+            return "Failed to update password.";
+        }
+    }
+
+    private function generateRandomPassword($length = 8)
+    {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $password = '';
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $password;
+    }
 }
