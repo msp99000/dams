@@ -65,7 +65,7 @@ class UserAuth
 
             if ($userType == "Student") {
                 // Fetch student ID using the new method
-                $_SESSION['student_id'] = $this->getstudentId($username);
+                $_SESSION['student_id'] = $this->getStudentId($username);
             }
 
             return true; // Successful login
@@ -74,44 +74,75 @@ class UserAuth
         }
     }
 
-    public function sendPasswordResetEmail($userType, $username)
+    public function sendPasswordResetEmail($userType, $username, $email)
     {
-        // $newPassword = $this->generateRandomPassword(); // Generate a new password
-        $newPassword = 0000; // Generate a new password
-        $hashedPassword = md5($newPassword);
-
-        $updateQuery = "";
-
         if ($userType == "Administrator") {
-            $updateQuery = "UPDATE admins SET password = '$hashedPassword' WHERE username = '$username'";
+            $query = "SELECT * FROM admins WHERE username = '$username' AND email = '$email' ";
         } elseif ($userType == "Instructor") {
-            $updateQuery = "UPDATE instructors SET password = '$hashedPassword' WHERE username = '$username'";
+            $query = "SELECT * FROM instructors WHERE username = '$username' AND email = '$email' ";
         } elseif ($userType == "Student") {
-            $updateQuery = "UPDATE students SET password = '$hashedPassword' WHERE username = '$username'";
+            $query = "SELECT * FROM students WHERE username = '$username' AND email = '$email' ";
         } else {
-            return "Invalid user type.";
+            return "Invalid Username/Email!";
         }
 
-        $result = $this->conn->query($updateQuery);
+        $rs = $this->conn->query($query);
+        $num = $rs->num_rows;
+        $rows = $rs->fetch_assoc();
 
-        if ($result) {
-            // Send password reset email
-            // $emailSender = new EmailSender();
-            // $emailSender->sendResetPasswordEmail($username, $newPassword);
-            echo "<h4 style='color:green;'>Email with password sent successfully</h4>";
-            return true;
+        if ($num > 0) {
+            // Generate a random password
+            // $randomPassword = $this->generateRandomPassword();
+            $randomPassword = 0000;
+
+            // Send the random password to the user's email
+            $subject = "Password Reset";
+            $message = "Your new password is: $randomPassword";
+
+            $headers = "From: webmaster@example.com";
+
+            // Send the email (you should handle errors and use a proper email sending library)
+            if (mail($email, $subject, $message, $headers)) {
+                $newPassword = md5($randomPassword);
+
+                $updateQuery = "";
+
+                if ($userType == "Administrator") {
+                    $updateQuery = "UPDATE admins SET password = '$newPassword' WHERE username = '$username' and email = '$email'";
+                } elseif ($userType == "Instructor") {
+                    $updateQuery = "UPDATE instructors SET password = '$newPassword' WHERE username = '$username' and email = '$email'";
+                } elseif ($userType == "Student") {
+                    $updateQuery = "UPDATE students SET password = '$newPassword' WHERE username = '$username' and email = '$email'";
+                } else {
+                    return "Invalid user type.";
+                }
+
+                $result = $this->conn->query($updateQuery);
+
+                if ($result) {
+                    return "Password sent to your email!";
+                } else {
+                    return "Invalid Username/Email!";
+                }
+            } else {
+                return "Failed to send email.";
+            }
         } else {
-            return "Failed to update password.";
+            return "Invalid Username/Email!";
         }
     }
 
-    private function generateRandomPassword($length = 8)
+    private function generateRandomPassword()
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        // Generate a random password (you may customize the length and characters)
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $password = '';
+        $length = 10;
+
         for ($i = 0; $i < $length; $i++) {
             $password .= $characters[rand(0, strlen($characters) - 1)];
         }
+
         return $password;
     }
 }
