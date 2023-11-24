@@ -28,12 +28,13 @@
                     <input type="password" id="password" name="password" class="rounded-input" placeholder="Password" required>
                 </div>
                 <?php if (isset($_GET['error'])) { ?> <h4 style="color:red;"> Invalid Username or Password.</h1> <?php } ?>
-                    <div class="input-group">
-                        <input type="submit" class="rounded-button" name="login-button" value="Login">
-                    </div>
-                    <div class="forgot-password-link">
-                        <a href="config/forgotPassword.php">Forgot Password?</a>
-                    </div>
+                    <?php if (isset($_GET['success'])) { ?> <h4 style="color:green;"> New Password is sent to your email!</h1> <?php } ?>
+                        <div class="input-group">
+                            <input type="submit" class="rounded-button" name="login-button" value="Login">
+                        </div>
+                        <div class="forgot-password-link">
+                            <a href="config/forgotPassword.php">Forgot Password?</a>
+                        </div>
             </form>
         </div>
         <?php include "components/footer.php" ?>
