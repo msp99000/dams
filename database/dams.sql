@@ -171,8 +171,8 @@ INSERT INTO `schedules` (`schedule_id`, `class_id`, `instructor_id`, `student_id
 (702, 602, 1135501, 1100435, '2018-01-17 15:00:00', 'Active');
 
 INSERT INTO `leaves` (`leave_request_id`, `student_id`, `instructor_id`, `class_id`, `request_date`, `status`, `reason`, `response_date`) VALUES
-(1001, 11003550, , 602, '2023-10-21', 'Pending', 'Sick leave', NULL),
-(1002, 11003550, 1135500, 601, '2023-11-21', 'Pending', 'Sick leave', NULL);
+(1001, 1100430, 1135500, 602, '2023-10-21', 'Pending', 'Sick leave', NULL),
+(1002, 1100430, 1135501, 601, '2023-11-21', 'Pending', 'Sick leave', NULL);
 
 INSERT INTO `attendance` (`attendance_id`, `class_id`, `instructor_id`, `student_id`, `course_id`, `date`, `status`) VALUES
-(1, 602, 2437508, 1100432, 501, '2023-10-21', 'Present');
+(1, 601, 1135500, 1100430, 501, '2018-01-16', 'Present');
