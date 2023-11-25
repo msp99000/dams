@@ -32,3 +32,12 @@ document
     navList.style.display =
       navList.style.display === "block" ? "none" : "block";
   });
+
+// Attach click event to the Table export button
+document.getElementById("exportButton").addEventListener("click", function () {
+  // Use TableExport to export the table to Excel
+  $("#dataTableHover").tableExport({
+    type: "excel",
+    escape: "false",
+  });
+});
