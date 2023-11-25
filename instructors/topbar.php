@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-container">
     <div class="brand">
-        <img src="../assets/images/brand.png" style="max-width: 60px; margin-right:24px" >
+      <img src="../assets/images/brand.png" style="max-width: 60px; margin-right:24px">
       <a href="index.php" style="color: white; text-decoration: none;">D A M S</a>
     </div>
     <div class="mobile-menu-button">
@@ -15,6 +15,7 @@
         <ul class="sub-list" id="students-submenu">
           <li><a href="viewAttendance.php">View Attedance</a></li>
           <li><a href="markAttendance.php">Mark Attedance</a></li>
+          <li><a href="editAttendance.php">Edit Attedance</a></li>
         </ul>
       </li>
       <li class="expander" id="users-expander">
@@ -52,9 +53,9 @@
           <img src="../assets/images/teacher.svg" style="max-width: 35px">
         </a>
         <ul class="sub-list" id="students-submenu">
-          <li style="width: auto;" ><a href="../scripts/logout.php">Logout</a></li>
+          <li style="width: auto;"><a href="../scripts/logout.php">Logout</a></li>
         </ul>
-      </li> 
+      </li>
     </ul>
   </div>
 </nav>
