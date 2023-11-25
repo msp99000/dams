@@ -88,9 +88,9 @@
               if (isset($_POST['takeAttendance'])) {
                 $check = isset($_POST['check']) ? $_POST['check'] : [];
 
-                foreach ($check as $student_id) {
-                  // Determine the status based on whether the checkbox is ticked
-                  $attendanceStatus = isset($_POST['check'][$student_id]) ? 'Present' : 'Absent';
+                foreach ($allStudents as $student_id) {
+                  // Determine the status based on whether the student_id is in the $check array
+                  $attendanceStatus = in_array($student_id, $check) ? 'Present' : 'Absent';
 
                   // Retrieve class_id from the initial fetch loop
                   $instructor_id = $_SESSION['instructor_id'];
