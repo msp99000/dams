@@ -167,6 +167,15 @@ body {
   margin-right: 0; /* Remove margin for the last item to prevent extra space */
 }
 
+.rounded-success-button {
+  background-color: #28a745; /* Success color */
+  color: #fff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+}
+
 /* Styles for screens with a max-width of 768px (typical for mobile devices) */
 @media screen and (max-width: 768px) {
   .navbar-container {
