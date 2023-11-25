@@ -25,9 +25,6 @@ if (isset($_POST['login-button'])) {
         }
     } else {
         $error_message = "fail";
-        // echo "Invalid Username or Password";
-        // echo "<script> alert('Invalid Username/Password') </script>";
-        //header("Location: retry.php");
         header("Location: ../index.php?error=$error_message");
     }
 }
