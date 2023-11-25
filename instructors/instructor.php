@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include "../config/connection.php";
 
 $database = new Database();
@@ -134,11 +137,11 @@ class Instructor
         return $users;
     }
 
-    public function list_attendance()
+    public function list_attendance($instructorId)
     {
         global $conn;
 
-        $query = "SELECT * FROM attendance";
+        $query = "SELECT DISTINCT class_id, student_id, course_id, `date`, `status` FROM attendance WHERE instructor_id=$instructorId";
         $rs = $conn->query($query);
         $users = array(); // Create an array to store all user rows
 
@@ -164,12 +167,28 @@ class Instructor
         return $users;
     }
 
-    public function list_courses()
+    public function list_classes($id)
     {
         global $conn;
 
-        $query = "SELECT * FROM courses";
-        $rs = $conn->query($query);
+        // Use prepared statement to prevent SQL injection
+        $query = "SELECT DISTINCT c.class_id, c.section, `schedule`, `status` 
+              FROM schedules 
+              INNER JOIN classes c USING (class_id) 
+              WHERE instructor_id = ?";
+
+        // Prepare the statement
+        $stmt = $conn->prepare($query);
+
+        // Bind the parameter
+        $stmt->bind_param("i", $id);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Get the result
+        $rs = $stmt->get_result();
+
         $users = array(); // Create an array to store all user rows
 
         while ($row = $rs->fetch_assoc()) {
@@ -179,12 +198,29 @@ class Instructor
         return $users;
     }
 
-    public function list_classes()
+    public function list_courses($id)
     {
         global $conn;
 
-        $query = "SELECT * FROM classes";
-        $rs = $conn->query($query);
+        // Use prepared statement to prevent SQL injection
+        $query = "SELECT DISTINCT c.course_id, course_name, course_code 
+              FROM schedules 
+              INNER JOIN classes USING (class_id) 
+              INNER JOIN courses c USING (course_id) 
+              WHERE instructor_id = ?";
+
+        // Prepare the statement
+        $stmt = $conn->prepare($query);
+
+        // Bind the parameter
+        $stmt->bind_param("i", $id);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Get the result
+        $rs = $stmt->get_result();
+
         $users = array(); // Create an array to store all user rows
 
         while ($row = $rs->fetch_assoc()) {
@@ -236,7 +272,7 @@ class Instructor
         $stmt = $conn->prepare($query);
 
         // Bind parameters to the prepared statement
-        $stmt->bind_param("ssssi", $firstName, $lastName, $dob, $email, $phone);
+        $stmt->bind_param("sssss", $firstName, $lastName, $dob, $email, $phone);
 
         // Execute the prepared statement
         if ($stmt->execute()) {
@@ -251,7 +287,7 @@ class Instructor
         global $conn;
 
         // Prepare the SQL statement with a placeholder
-        $query = "DELETE FROM studentss WHERE student_id = ?";
+        $query = "DELETE FROM students WHERE student_id = ?";
 
         // Create a prepared statement
         $stmt = $conn->prepare($query);
